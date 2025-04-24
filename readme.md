@@ -1,4 +1,3 @@
-Overview
 A RESTful API using Node.js, Express.js, and MySQL to manage school data. The system allows users to:
 
 Add new schools with location information
