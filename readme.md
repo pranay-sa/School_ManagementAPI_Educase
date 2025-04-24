@@ -1,61 +1,53 @@
-**A RESTful API using Node.js, Express.js, and MySQL to manage school data. The system allows users to:**
+A RESTful API using Node.js, Express.js, and MySQL to manage school data. The system allow users to:
 
 Add new schools with location information
+and Retrieve a list of schools sorted by proximity to a user location based on lattude and longitude inputs (used 
+Haversine formula for distance calculation)
 
-and Retrieve a list of schools sorted by proximity to a user location based on lattude and longitude inputs (used Haversine formula for distance calculation)
 
-
-**Project Structure**
+Project Structure
 Clone the repo as it is to maintain the project structure, and follow next steps
 
 
-**Installation**
+Installation
 
 Clone the repository:
-
-git clone https://github.com/pranay-sa/School_ManagementAPI_Educase/
-
+git clone (https://github.com/pranay-sa/School_ManagementAPI_Educase/)
 cd SCHOOLMANAGEMENTAPI
 
 Install dependencies:
-
 npm install
 
-**Configure environment variables:**
+
+
+Configure environment variables:
 
 Edit the .env file in the root directory with your following credentials
 
 DB_HOST=localhost
-
 DB_USER=your_mysql_username
-
 DB_PASSWORD=your_mysql_password
-
 DB_NAME=school_management
-
 PORT=3000
 
 
 
-**Start the server:**
+Start the server:
 
-node app.js
+npm start
 
 The server will run on http://localhost:3000 by default, or on the port specified in your environment variables.
 
 
-Database Setup
 
+Database Setup
 Using MySQL Command Line or Run the below commands on MySQL workbench
 
 Log in to MySQL:
-
 mysql -u root -p
 
 Create the database and table:
-
 CREATE DATABASE school_management;
-
 USE school_management;
 
 CREATE TABLE schools (
@@ -71,14 +63,11 @@ CREATE TABLE schools (
 Using MySQL Workbench
 
 Open MySQL Workbench
-
 Connect to your MySQL server
-
 Create a new schema named school_management
+Run the following SQL scripts:
 
-**Run the SQL scripts:**
-
-USE school_management;
+sqlUSE school_management;
 
 CREATE TABLE schools (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -88,6 +77,7 @@ CREATE TABLE schools (
   longitude FLOAT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 **API Documentation**
@@ -133,23 +123,18 @@ json{
 
 
 
-**2. List Schools**
-
+**2. List Schools
+**
 Endpoint: /listSchools
-
 Method: GET
-
-Description: Get a list of schools sorted by proximity using latitude/longitude
-
+Description: Get a list of schools sorted by proximity to specified coordinates
 Query Parameters:
 
 latitude: User's latitude (required)
-
 longitude: User's longitude (required)
 
 
 Example: /listSchools?latitude=40.7128&longitude=-74.0060
-
 Success Response:
 
 Code: 200 OK
@@ -189,19 +174,14 @@ json{
 
 
 
-
-Testing with Postman
-
+**Testing with Postman**
 A Postman collection is included in this repository. To use it:
 
-Import the School Management API.postman_collection.json file into Postman, and
-
+Import the School Management API.postman_collection.json file into Postman
 Set up an environment variable baseUrl with value http://localhost:3000 (or your deployment URL)
 
 Test the endpoints:
-
 Add School: Send a POST request to {{baseUrl}}/addSchool
-
 List Schools: Send a GET request to {{baseUrl}}/listSchools?latitude=40.7128&longitude=-74.0060
 
 or use custom JSON inputs 
