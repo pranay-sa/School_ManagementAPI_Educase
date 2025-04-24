@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "ed846ca6-6c54-4f95-bd90-6d769968b9c4",
+		"name": "School Management API",
+		"description": "API collection for School Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43059953",
+		"_collection_link": "https://warped-robot-913752.postman.co/workspace/Team-Workspace~46786d19-69c2-4fe2-874e-271bc278ad59/collection/43059953-ed846ca6-6c54-4f95-bd90-6d769968b9c4?action=share&source=collection_link&creator=43059953"
+	},
+	"item": [
+		{
+			"name": "Add School",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ABC School\",\n    \"address\": \"123 Main Street, City\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.0060\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/addSchool",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"addSchool"
+					]
+				},
+				"description": "Add a new school to the database"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ABC School\",\n    \"address\": \"123 Main Street, City\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.0060\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addSchool",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addSchool"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"School added successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"ABC School\",\n        \"address\": \"123 Main Street, City\",\n        \"latitude\": 40.7128,\n        \"longitude\": -74.0060\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List Schools",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/listSchools?latitude=40.7128&longitude=-74.0060",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"listSchools"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "40.7128"
+						},
+						{
+							"key": "longitude",
+							"value": "-74.0060"
+						}
+					]
+				},
+				"description": "List all schools sorted by proximity to user location"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/listSchools?latitude=40.7128&longitude=-74.0060",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"listSchools"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "40.7128"
+								},
+								{
+									"key": "longitude",
+									"value": "-74.0060"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"ABC School\",\n            \"address\": \"123 Main Street, City\",\n            \"latitude\": 40.7128,\n            \"longitude\": -74.0060,\n            \"distance\": 0\n        },\n        {\n            \"id\": 2,\n            \"name\": \"XYZ School\",\n            \"address\": \"456 Park Avenue, City\",\n            \"latitude\": 40.7500,\n            \"longitude\": -73.9800,\n            \"distance\": 4.23\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
